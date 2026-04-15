@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KBO Live Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=SUIT:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">2026 KBO LIVE TRACKER</p>
+          <h1>10개 팀, 하루 5경기, 한 화면 실시간 중계</h1>
+          <p class="hero__description">
+            경기 흐름, 이닝별 점수, 실시간 로그, 팀 상태를 동시에 보는 KBO 라이브 센터입니다.
+          </p>
+        </div>
+
+        <div class="hero__meta">
+          <div class="meta-card">
+            <span class="meta-card__label">오늘 경기</span>
+            <strong id="gamesToday">5</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-card__label">활성 팀</span>
+            <strong id="teamsLive">10</strong>
+          </div>
+          <div class="meta-card meta-card--pulse">
+            <span class="meta-card__label">데이터 상태</span>
+            <strong>LIVE</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel panel--favorite-home">
+        <div class="panel__header">
+          <div>
+            <p class="panel__eyebrow">My Team Home</p>
+            <h2>마이 팀 전용 홈</h2>
+          </div>
+        </div>
+        <div id="favoriteHome" class="favorite-home"></div>
+      </section>
+
+      <main class="layout">
+        <section class="panel panel--games">
+          <div class="panel__header">
+            <div>
+              <p class="panel__eyebrow">Live Scoreboard</p>
+              <h2>실시간 5경기</h2>
+            </div>
+            <p class="panel__timestamp">
+              마지막 갱신 <span id="lastUpdated">--:--:--</span>
+            </p>
+          </div>
+
+          <div class="my-team-bar">
+            <div class="my-team-copy">
+              <p class="panel__eyebrow">My Team</p>
+              <h3>관심 팀 설정</h3>
+            </div>
+            <div class="my-team-controls">
+              <select id="favoriteTeamSelect" class="team-select">
+                <option value="">전체 팀 보기</option>
+              </select>
+              <button id="favoriteTeamToggle" class="team-toggle" type="button">
+                전체 보기
+              </button>
+            </div>
+          </div>
+
+          <p id="boardNotice" class="board-notice">KBO 공식 데이터를 불러오는 중입니다.</p>
+          <div id="gamesGrid" class="games-grid"></div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel panel--spotlight">
+            <div class="panel__header">
+              <div>
+                <p class="panel__eyebrow">Featured Game</p>
+                <h2>경기 상세</h2>
+              </div>
+            </div>
+            <div id="spotlight" class="spotlight"></div>
+          </section>
+
+          <section class="panel panel--teams">
+            <div class="panel__header">
+              <div>
+                <p class="panel__eyebrow">Club Radar</p>
+                <h2>팀 상태</h2>
+              </div>
+            </div>
+            <div id="teamsBoard" class="teams-board"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <template id="gameCardTemplate">
+      <article class="game-card">
+        <div class="game-card__top">
+          <span class="game-card__status"></span>
+          <span class="game-card__stadium"></span>
+        </div>
+        <div class="game-card__teams"></div>
+        <div class="game-card__inning"></div>
+        <div class="game-card__footer">
+          <div class="bases">
+            <span class="base base--first"></span>
+            <span class="base base--second"></span>
+            <span class="base base--third"></span>
+          </div>
+          <div class="count"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

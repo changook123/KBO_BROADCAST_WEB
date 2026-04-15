@@ -1,0 +1,12 @@
+{
+  "name": "kbo-live-center",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KBO 10개 팀과 5개 경기 실시간 중계 대시보드",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "node": "^25.9.0"
+  }
+}
